@@ -1,0 +1,355 @@
+local _0x = {
+    [1] = game,
+    [2] = "GetService",
+    [3] = "Players",
+    [4] = "UserInputService",
+    [5] = "RunService",
+    [6] = "CreateVirtualInput",
+    [7] = "LocalPlayer",
+    [8] = "CurrentCamera",
+    [9] = "Character",
+    [10] = "CharacterAdded",
+    [11] = "Wait",
+    [12] = "WaitForChild",
+    [13] = "Humanoid",
+    [14] = "HumanoidRootPart",
+    [15] = "ScreenGui",
+    [16] = "CustomMobileControls",
+    [17] = "PlayerGui",
+    [18] = "TextButton",
+    [19] = "AutoClicker",
+    [20] = "ClickSpeed",
+    [21] = "JumpButton",
+    [22] = "Frame",
+    [23] = "JoystickBase",
+    [24] = "JoystickKnob",
+    [25] = "UICorner",
+    [26] = "PlayerScripts",
+    [27] = "PlayerModule",
+    [28] = "Touch",
+    [29] = "MouseButton1"
+}
+
+local a = _0x[1][_0x[2]](_0x[1], _0x[3])
+local b = _0x[1][_0x[2]](_0x[1], _0x[4])
+local c = _0x[1][_0x[2]](_0x[1], _0x[5])
+local d = b[_0x[6]](b)
+
+local e = a[_0x[7]]
+local f = workspace[_0x[8]]
+local g, h, i
+
+local function j(k)
+    g = k
+    h = k:WaitForChild(_0x[13])
+    i = k:WaitForChild(_0x[14])
+end
+
+j(e[_0x[9]] or e[_0x[10]][_0x[11]](e[_0x[10]]))
+e[_0x[10]]:Connect(j)
+
+local l = 20
+
+local m = Instance.new(_0x[15])
+m.Name = _0x[16]
+m.ResetOnSpawn = false
+m.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+m.Parent = e:WaitForChild(_0x[17])
+
+local n = Instance.new(_0x[18])
+n.Name = _0x[19]
+n.Size = UDim2.new(0, 70, 0, 70)
+n.Position = UDim2.new(0.80, 0, 0.48, 0)
+n.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+n.BackgroundTransparency = 0.15
+n.Text = "🖱️"
+n.TextSize = 34
+n.Font = Enum.Font.GothamBold
+n.TextColor3 = Color3.new(1, 1, 1)
+n.AutoButtonColor = false
+n.Parent = m
+
+Instance.new(_0x[25], n).CornerRadius = UDim.new(1, 0)
+
+local o = {2, 3, 5, 8, 15, 20, 25, 30}
+local p = 1
+local q = o[p]
+
+local r = Instance.new(_0x[18])
+r.Name = _0x[20]
+r.Size = UDim2.new(0, 70, 0, 40)
+r.Position = UDim2.new(0.80, 0, 0.57, 0)
+r.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+r.BackgroundTransparency = 0.15
+r.Text = "⚡ " .. q
+r.TextSize = 18
+r.Font = Enum.Font.GothamBold
+r.TextColor3 = Color3.new(1, 1, 1)
+r.AutoButtonColor = false
+r.Parent = m
+
+Instance.new(_0x[25], r).CornerRadius = UDim.new(0.25, 0)
+
+r.InputBegan:Connect(function(s)
+    if s.UserInputType == Enum.UserInputType[_0x[28]]
+    or s.UserInputType == Enum.UserInputType[_0x[29]] then
+        p += 1
+        if p > #o then
+            p = 1
+        end
+        q = o[p]
+        r.Text = "⚡ " .. q
+    end
+end)
+
+local t = Instance.new(_0x[18])
+t.Name = _0x[21]
+t.Size = UDim2.new(0, 75, 0, 75)
+t.Position = UDim2.new(0.80, 0, 0.68, 0)
+t.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+t.BackgroundTransparency = 0.15
+t.Text = "⬆️"
+t.TextSize = 34
+t.Font = Enum.Font.GothamBold
+t.TextColor3 = Color3.new(1, 1, 1)
+t.AutoButtonColor = false
+t.Parent = m
+
+Instance.new(_0x[25], t).CornerRadius = UDim.new(1, 0)
+
+local u = Instance.new(_0x[22])
+u.Name = _0x[23]
+u.Size = UDim2.new(0, 140, 0, 140)
+u.Position = UDim2.new(0.06, 0, 0.52, 0)
+u.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+u.BackgroundTransparency = 0.45
+u.Active = true
+u.Parent = m
+
+Instance.new(_0x[25], u).CornerRadius = UDim.new(1, 0)
+
+local v = Instance.new(_0x[22])
+v.Name = _0x[24]
+v.Size = UDim2.new(0, 58, 0, 58)
+v.Position = UDim2.new(0.5, -29, 0.5, -29)
+v.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+v.BackgroundTransparency = 0.05
+v.Active = false
+v.Parent = u
+
+Instance.new(_0x[25], v).CornerRadius = UDim.new(1, 0)
+
+local w = false
+local x, y, z = nil, nil, false
+local A, B = nil, nil
+local C = nil
+local D = false
+local E = Vector2.zero
+local F = 41
+
+local function G()
+    pcall(function()
+        local H = require(
+            e:WaitForChild(_0x[26]):WaitForChild(_0x[27])
+        )
+        H:GetControls():Disable()
+    end)
+end
+
+G()
+
+e[_0x[10]]:Connect(function()
+    task.defer(G)
+end)
+
+task.spawn(function()
+    while true do
+        if w then
+            local H = f.ViewportSize
+            local I = Vector2.new(H.X / 2, H.Y / 2)
+
+            pcall(function()
+                d:SendMousePosition(I)
+
+                for J = 1, q * 2 do
+                    d:SendMouseButton(
+                        I,
+                        Enum.UserInputType.MouseButton1,
+                        true,
+                        0
+                    )
+
+                    d:SendMouseButton(
+                        I,
+                        Enum.UserInputType.MouseButton1,
+                        false,
+                        0
+                    )
+                end
+            end)
+
+            task.wait(0.001)
+        else
+            task.wait(0.01)
+        end
+    end
+end)
+
+n.InputBegan:Connect(function(H)
+    if (
+        H.UserInputType == Enum.UserInputType.Touch
+        or H.UserInputType == Enum.UserInputType.MouseButton1
+    ) and not x then
+        x = H
+        y = H.Position
+        A = H.Position
+        B = n.Position
+        z = false
+    end
+end)
+
+b.InputChanged:Connect(function(H)
+    if H == x then
+        local I = H.Position - y
+
+        if I.Magnitude > 15 then
+            z = true
+        end
+
+        if z then
+            local J = H.Position.X - A.X
+            local K = H.Position.Y - A.Y
+
+            n.Position = UDim2.new(
+                B.X.Scale,
+                B.X.Offset + J,
+                B.Y.Scale,
+                B.Y.Offset + K
+            )
+
+            r.Position = UDim2.new(
+                n.Position.X.Scale,
+                n.Position.X.Offset,
+                n.Position.Y.Scale,
+                n.Position.Y.Offset + 75
+            )
+        end
+    end
+end)
+
+b.InputEnded:Connect(function(H)
+    if H == x then
+        if not z then
+            w = not w
+
+            n.BackgroundColor3 = w
+                and Color3.fromRGB(0, 180, 0)
+                or Color3.fromRGB(40, 40, 40)
+        end
+
+        x = nil
+        y = nil
+        A = nil
+        B = nil
+        z = false
+    end
+end)
+
+t.InputBegan:Connect(function(H)
+    if H.UserInputType == Enum.UserInputType.Touch
+    or H.UserInputType == Enum.UserInputType.MouseButton1 then
+        if h then
+            h.Jump = true
+        end
+    end
+end)
+
+u.InputBegan:Connect(function(H)
+    if (
+        H.UserInputType == Enum.UserInputType.Touch
+        or H.UserInputType == Enum.UserInputType.MouseButton1
+    ) and not C then
+        C = H
+        D = true
+    end
+end)
+
+b.InputChanged:Connect(function(H)
+    if H == C and D then
+        local I = u.AbsolutePosition + u.AbsoluteSize / 2
+        local J = Vector2.new(H.Position.X, H.Position.Y)
+        local K = J - I
+
+        if K.Magnitude > F then
+            K = K.Unit * F
+        end
+
+        E = K
+
+        v.Position = UDim2.new(
+            0.5,
+            K.X - 29,
+            0.5,
+            K.Y - 29
+        )
+    end
+end)
+
+local function L()
+    C = nil
+    D = false
+    E = Vector2.zero
+
+    v.Position = UDim2.new(0.5, -29, 0.5, -29)
+
+    if h then
+        h:Move(Vector3.zero, false)
+    end
+
+    if i then
+        local M = i.AssemblyLinearVelocity
+        i.AssemblyLinearVelocity = Vector3.new(0, M.Y, 0)
+    end
+end
+
+b.InputEnded:Connect(function(H)
+    if H == C then
+        L()
+    end
+end)
+
+c.RenderStepped:Connect(function()
+    if not D or not h or not i then
+        return
+    end
+
+    if h.Health <= 0 then
+        L()
+        return
+    end
+
+    local H = E.X / F
+    local I = E.Y / F
+
+    local J = f.CFrame.LookVector
+    local K = f.CFrame.RightVector
+
+    local M = Vector3.new(J.X, 0, J.Z)
+    local N = Vector3.new(K.X, 0, K.Z)
+
+    if M.Magnitude > 0.01 then
+        M = M.Unit
+    end
+
+    if N.Magnitude > 0.01 then
+        N = N.Unit
+    end
+
+    local O = M * -I + N * H
+
+    if O.Magnitude > 0.01 then
+        h:Move(O.Unit, false)
+    else
+        h:Move(Vector3.zero, false)
+    end
+end)
